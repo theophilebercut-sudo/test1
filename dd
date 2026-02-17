@@ -1,0 +1,77 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/GUIDE_DEMARRAGE.md b/GUIDE_DEMARRAGE.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..dd02a7a311086341e0c12cf5d700c5ef1a1802ab
+--- /dev/null
++++ b/GUIDE_DEMARRAGE.md
+@@ -0,0 +1,67 @@
++# Guide néophyte de la base de code
++
++## 1) Structure générale (état actuel)
++
++Le dépôt est **minimal** :
++
++- `/.git` : dossier Git (historique, configuration, branches, hooks, etc.).
++- `/.gitkeep` : fichier sentinelle vide pour conserver le dépôt non vide.
++
++👉 En clair, il n’y a pas encore de code applicatif (pas de `src/`, pas de `package.json`, pas de `pyproject.toml`, etc.).
++
++## 2) Choses importantes à savoir
++
++- Le projet est **au stade de squelette** : l’objectif est probablement de poser les bases avant d’implémenter une application.
++- Le branchement Git courant est `work`.
++- Comme il n’y a pas encore de code métier, le meilleur investissement pour apprendre est de maîtriser la structure Git et préparer une architecture simple.
++
++## 3) Points de repère pour la suite de l’apprentissage
++
++### A. Les fondamentaux à apprendre en premier
++
++1. **Git de base**
++   - `git status`, `git add`, `git commit`, `git log --oneline`.
++   - Comprendre la différence entre *working tree*, *staging area* et *commit*.
++
++2. **Convention de structure d’un projet**
++   - Créer un `README.md` (objectif du projet + démarrage rapide).
++   - Ajouter un dossier principal de code (`src/` par exemple).
++   - Ajouter des tests (`tests/` ou équivalent selon techno).
++
++3. **Cycle de développement simple**
++   - Créer une feature petite.
++   - Écrire/adapter un test.
++   - Committer avec un message clair.
++
++### B. Proposition de structure de départ (générique)
++
++```text
++.
++├── README.md
++├── src/
++├── tests/
++├── docs/
++└── .gitignore
++```
++
++### C. Check-list “première itération”
++
++- [ ] Définir la technologie principale (Python / Node.js / Go / etc.).
++- [ ] Ajouter le fichier de dépendances (`requirements.txt`, `package.json`, etc.).
++- [ ] Écrire un “Hello World” exécutable.
++- [ ] Ajouter un test minimal.
++- [ ] Documenter comment lancer le projet.
++
++## 4) Comment lire une base de code quand elle grandit
++
++Quand du code sera ajouté, parcours-le dans cet ordre :
++
++1. `README.md` → pour comprendre la finalité.
++2. Fichier d’entrée (`main`, `app`, `index`, etc.) → pour voir le flux principal.
++3. Dossier `src/` → modules métiers.
++4. Dossier `tests/` → exemples concrets d’utilisation.
++5. Configuration (`.env.example`, CI, lint) → règles de qualité.
++
++---
++
++Si tu veux, je peux aussi te proposer **une structure initiale complète** adaptée à un langage précis (Python, JavaScript/TypeScript, etc.) avec des fichiers prêts à l’emploi.
+ 
+EOF
+)
